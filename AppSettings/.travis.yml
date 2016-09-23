@@ -1,0 +1,19 @@
+# 사용 플랫폼
+language : android
+# jdk 버전
+jdk : oraclejdk8
+# 플랫폼 컴포넌트
+android:
+  components:
+  - platform-tools              # ADB - 에뮬레이터, 디바이스와 통신을 하는 모듈
+  - tools                       # 안드로이드 SDK 관련
+  - build-tools-24.0.2          # 빌드하는 툴
+  - android-24                  # 타겟 안드로이드 플랫폼
+  - extra-android-m2repository  # 의존성 라이브러리 관리 툴
+
+# 스크립트 실행전 명령어
+before_install:
+  - chmod +x gradlew            # chmod 개별 사용자 권한변경
+
+# 스크립트 명령어
+script: ./gradlew build         # 그래들 스크립트 실행
