@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.sunghyun.andriod.basicwidget">
+          package="com.sunghyun.andriod.basiclist">
 
     <application
         android:allowBackup="true"
@@ -15,15 +15,25 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".TextActivity">
+        <activity android:name=".BasicList1Activity">
         </activity>
-        <activity android:name=".DateActivity">
-        </activity>
-        <activity android:name=".TabActivity">
-        </activity>
-        <activity android:name=".SpinnerActivity">
+        <activity android:name=".BasicList2Activity">
         </activity>
         <activity android:name=".CustomListActivity">
+        </activity>
+        <activity android:name=".BasicGridActivity">
+        </activity>
+        <activity android:name=".CustomGridActivity">
+        </activity>
+        <activity android:name=".ExpandableActivity">
+        </activity>
+        <activity android:name=".RecyclerActivity">
+        </activity>
+        <activity android:name=".RecyclerAnimationActivity">
+        </activity>
+        <activity android:name=".DetailActivity">
+        </activity>
+        <activity android:name=".RecyclerCardActivity">
         </activity>
     </application>
 
