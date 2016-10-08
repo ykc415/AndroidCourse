@@ -20,17 +20,17 @@ public class CustomListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_custom_list);
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_custom_list);
 
-        ArrayList<String> datas = new ArrayList<>();
-        for(int i = 0;i<30;i++) {
-            datas.add("data:"+i);
-        }
+            ArrayList<String> datas = new ArrayList<>();
+            for(int i = 0;i<30;i++) {
+                datas.add("data:"+i);
+            }
 
-        listView = (ListView) findViewById(R.id.listView2);
-        adapter = new CustomAdapter(this, datas);
-        listView.setAdapter(adapter);
+            listView = (ListView) findViewById(R.id.listView2);
+            adapter = new CustomAdapter(this, datas);
+            listView.setAdapter(adapter);
     }
 
 
