@@ -1,7 +1,13 @@
 package com.kodonho.android.sqlitebasic_bbs;
 
 import android.content.Context;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,27 +15,28 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 public class EditFragment extends Fragment {
+
     private static final int BBS_INSERT = -1;
+    private static final int REQ_CODE_IMAGE = 99;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
 
     // 메인액티비티와 통신하는 리스너
     OnFragmentListener listener;
 
     Button cancel;
     Button save;
+    Button image;
 
     int bbsno = -1;
 
     EditText title;
     EditText name;
     EditText contents;
+    ImageView imageView;
+
 
     public EditFragment() {
         // Required empty public constructor
@@ -59,8 +66,7 @@ public class EditFragment extends Fragment {
     public static EditFragment newInstance(String param1, String param2) {
         EditFragment fragment = new EditFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+
         fragment.setArguments(args);
         return fragment;
     }
@@ -69,8 +75,6 @@ public class EditFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -104,11 +108,48 @@ public class EditFragment extends Fragment {
                 listener.action(MainActivity.ACTION_GOLIST_WITH_REFRESH);
             }
         });
+        image = (Button) view.findViewById(R.id.img_button);
+        image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK,
+                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI); // 이미지를 호출하는 action Intent
+                startActivityForResult(intent, REQ_CODE_IMAGE);       // 결과값을 넘겨받기 위해 호출
+            }
+        });
+
+
+        imageView = (ImageView) view.findViewById(R.id.edit_imageView);
         name = (EditText) view.findViewById(R.id.etName);
         title = (EditText) view.findViewById(R.id.etTitle);
         contents = (EditText) view.findViewById(R.id.etContents);
 
         return view;
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == REQ_CODE_IMAGE && data != null) {
+            Uri mediaImage = data.getData();                       // 갤러리 Uri
+
+            String selections[] = {MediaStore.Images.Media.DATA}; // 실제 이미지 패스 데이터
+            Cursor cursor = getContext().getContentResolver().query(mediaImage, selections,null,null,null);
+
+            if(cursor.moveToNext()) {
+                String imagePath = cursor.getString(0);
+                name.setText(imagePath);
+
+                BitmapFactory.Options options = new BitmapFactory.Options();
+                options.inJustDecodeBounds = true; // 영역내의 크기로 그려주기
+                // 사이즈 지정 옵션
+                // 스케일 지정 옵션
+                options.inSampleSize = 4; // 이미지 사이즈를 1/4로 줄인다
+                Bitmap image = BitmapFactory.decodeFile(imagePath);
+               // imageView.setImageBitmap(BitmapFactory.decodeFile(imagePath));
+            }
+        }
     }
 
     @Override
