@@ -1,239 +1,56 @@
 package com.bignerdranch.android.threadbasic_tetris;
 
-import java.util.Random;
+import android.os.Handler;
 
 /**
  * Created by YKC on 2016. 10. 17..
  */
-public class Block {
-
-    private static final int ABS_X = 5;
-    private static final int ABS_Y = 0;
-
+public class Block extends Thread{
 
     int x = 0;
     int y = 0;
+    int orientation_limit = 0;
+    int orientation = 0;
+    private int blocktype[][][];
+    private int block[][];
 
-    private int currentOrientation = 0;
-    private int currentOrientationLimit = 0;
-    private int[][][] currentBlockGroup;
-    private int[][] currentBlock;
+    boolean alive = true;
+    int interval = 0;
+    Handler handler;
 
-    public void setBlock() {
-        Random random = new Random();
-        int type = random.nextInt(7);
-
-        // 블럭의 회전상태를 포함한 블럭 그룹을 선택
-        currentBlockGroup = block[type];
-
-        currentOrientation = 0;
-        currentOrientationLimit = currentBlockGroup.length;
-        currentBlock = currentBlockGroup[currentOrientation];
-
-        //최초에 세팅되는 블럭의 위치
-        x = ABS_X;
-        y = ABS_Y;
+    public void draw() {
+        handler.sendEmptyMessage(Stage.REFRESH);
     }
 
-    public void rotateBlock() {
-        currentOrientation++;
-        currentOrientation = currentOrientation % currentOrientationLimit;
-        currentBlock = currentBlockGroup[currentOrientation];
+
+    public Block(int[][][] blocktype, int interval, Handler handler) {
+        this.blocktype = blocktype;
+        this.interval = interval;
+        block = this.blocktype[orientation];
+        orientation_limit = this.blocktype.length;
+        this.handler = handler;
     }
 
-    public int[][] getCurrentBlock() {
-        return currentBlock;
+    public void run() {
+        while(alive) {
+            try{
+                y++;
+                Thread.sleep(interval);
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+        }
     }
 
-    int block[][][][] = {
-             {
-                            // Block I
-                            {
-                            {0, 1, 0, 0},
-                            {0, 1, 0, 0},
-                            {0, 1, 0, 0},
-                            {0, 1, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {1, 1, 1, 1},
-                            {0, 0, 0, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 1, 0, 0},
-                            {0, 1, 0, 0},
-                            {0, 1, 0, 0},
-                            {0, 1, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {1, 1, 1, 1},
-                            {0, 0, 0, 0},
-                            {0, 0, 0, 0}
-                    }
-            },
-            // Block J
-            {
-                    {
-                            {0, 0, 2, 0},
-                            {0, 0, 2, 0},
-                            {0, 2, 2, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {0, 2, 0, 0},
-                            {0, 2, 2, 2},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 2, 2, 0},
-                            {0, 2, 0, 0},
-                            {0, 2, 0, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {2, 2, 2, 0},
-                            {0, 0, 2, 0},
-                            {0, 0, 0, 0}
-                    }
-            },
-            // Block L
-            {
-                    {
-                            {0, 3, 0, 0},
-                            {0, 3, 0, 0},
-                            {0, 3, 3, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {0, 3, 3, 3},
-                            {0, 3, 0, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 3, 3, 0},
-                            {0, 0, 3, 0},
-                            {0, 0, 3, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 3, 0},
-                            {3, 3, 3, 0},
-                            {0, 0, 0, 0},
-                            {0, 0, 0, 0}
-                    }
-            },
-            // Block S
-            {
-                    {
-                            {0, 0, 0, 0},
-                            {0, 4, 4, 0},
-                            {4, 4, 0, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 4, 0, 0},
-                            {0, 4, 4, 0},
-                            {0, 0, 4, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {0, 4, 4, 0},
-                            {4, 4, 0, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 4, 0, 0},
-                            {0, 4, 4, 0},
-                            {0, 0, 4, 0},
-                            {0, 0, 0, 0}
-                    }
-            },
-            // Block Z
-            {
-                    {
-                            {0, 0, 0, 0},
-                            {0, 5, 5, 0},
-                            {0, 0, 5, 5},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 5, 0},
-                            {0, 5, 5, 0},
-                            {0, 5, 0, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {0, 5, 5, 0},
-                            {0, 0, 5, 5},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 5, 0},
-                            {0, 5, 5, 0},
-                            {0, 5, 0, 0},
-                            {0, 0, 0, 0}
-                    }
-            },
-            // Block T
-            {
-                    {
-                            {0, 6, 0, 0},
-                            {0, 6, 6, 0},
-                            {0, 6, 0, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {6, 6, 6, 0},
-                            {0, 6, 0, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 6, 0, 0},
-                            {6, 6, 0, 0},
-                            {0, 6, 0, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 6, 0, 0},
-                            {6, 6, 6, 0},
-                            {0, 0, 0, 0},
-                            {0, 0, 0, 0}
-                    }
-            },
-            // Block O
-            {
-                    {
-                            {0, 0, 0, 0},
-                            {0, 7, 7, 0},
-                            {0, 7, 7, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {0, 7, 7, 0},
-                            {0, 7, 7, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {0, 7, 7, 0},
-                            {0, 7, 7, 0},
-                            {0, 0, 0, 0}
-                    },
-                    {
-                            {0, 0, 0, 0},
-                            {0, 7, 7, 0},
-                            {0, 7, 7, 0},
-                            {0, 0, 0, 0}
-                    },
-            },
-    };
+    public void rotate() {
+        orientation++;
+        orientation = orientation % orientation_limit;
+
+    }
+
+    public void move(int x, int y) {
+        this.x = x;
+        this.y = y;
+    }
+
 }
