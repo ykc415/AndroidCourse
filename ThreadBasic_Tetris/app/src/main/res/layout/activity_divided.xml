@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.kodonho.android.threadbasic_tetris.MainActivity">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="↓"
+        android:id="@+id/btnDown"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="←"
+        android:id="@+id/btnLeft"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/btnDown"
+        android:layout_toStartOf="@+id/btnDown" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="→"
+        android:id="@+id/btnRight"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnDown"
+        android:layout_toEndOf="@+id/btnDown" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="↑"
+        android:id="@+id/btnUp"
+        android:layout_above="@+id/btnDown"
+        android:layout_toLeftOf="@+id/btnRight"
+        android:layout_toStartOf="@+id/btnRight" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/btnUp"
+        android:id="@+id/relativeLayout">
+
+        <FrameLayout
+            android:layout_width="250dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:id="@+id/mainStage"></FrameLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/mainStage"
+            android:layout_toEndOf="@+id/mainStage">
+
+            <FrameLayout
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="right"
+                android:id="@+id/subStage"></FrameLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

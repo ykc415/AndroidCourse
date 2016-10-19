@@ -1,91 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.bignerdranch.android.threadbasic_tetris.MainActivity">
+    tools:context="com.kodonho.android.threadbasic_tetris.MainActivity">
 
     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="↓"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btnDown"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/button_down"/>
+        android:layout_centerHorizontal="true" />
 
     <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="←"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_up"
-        android:layout_toLeftOf="@+id/button_down"
-        android:layout_toStartOf="@+id/button_down"
-        android:id="@+id/button_left"/>
-
-    <Button
-        android:text="→"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/btnLeft"
         android:layout_alignParentBottom="true"
-        android:layout_toRightOf="@+id/button_down"
-        android:layout_toEndOf="@+id/button_down"
-        android:id="@+id/button_right"/>
+        android:layout_toLeftOf="@+id/btnDown"
+        android:layout_toStartOf="@+id/btnDown" />
 
     <Button
-        android:text="↑"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button_up"
-        android:layout_above="@+id/button_down"
-        android:layout_toRightOf="@+id/button_left"
-        android:layout_toEndOf="@+id/button_left"/>
+        android:text="→"
+        android:id="@+id/btnRight"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/btnDown"
+        android:layout_toEndOf="@+id/btnDown" />
 
-    <LinearLayout
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="↑"
+        android:id="@+id/btnUp"
+        android:layout_above="@+id/btnDown"
+        android:layout_toLeftOf="@+id/btnRight"
+        android:layout_toStartOf="@+id/btnRight" />
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/button_up"
-        android:orientation="horizontal">
-
-        <FrameLayout
-            android:id="@+id/stageLayout"
-            android:layout_width="0dp"
-            android:layout_weight="3"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/button_up"
-            android:layout_alignEnd="@+id/button_up"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:layout_alignRight="@+id/button_up"
-            tools:background="@color/background">
-
-        </FrameLayout>
-
-        <LinearLayout
-            android:id="@+id/optionLayout"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_height="match_parent"
-            android:layout_above="@+id/button_up"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true">
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:id="@+id/previewLayout">
-
-            </FrameLayout>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/btnUp"
+        android:id="@+id/singleStage"></FrameLayout>
 </RelativeLayout>

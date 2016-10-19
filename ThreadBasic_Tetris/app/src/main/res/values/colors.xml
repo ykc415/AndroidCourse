@@ -5,20 +5,20 @@
     <color name="colorAccent">#FF4081</color>
 
     <!-- background -->
-    <color name="background">#bcbcbc</color>
+    <color name="background">#ffffff</color>
     <color name="border">#000000</color>
 
-    <!-- block color-->
-    <color name="block1">#fa1418</color>
-    <color name="block2">#ef9d05</color>
-    <color name="block3">#ffed24</color>
-    <color name="block4">#10d906</color>
-    <color name="block5">#24a7ff</color>
-    <color name="block6">#0004e4</color>
-    <color name="block7">#c202f2</color>
+    <!-- block color -->
+    <color name="block1">#ff232a</color>
+    <color name="block2">#ff9d00</color>
+    <color name="block3">#ffee00</color>
+    <color name="block4">#2bff00</color>
+    <color name="block5">#00fbff</color>
+    <color name="block6">#2335ff</color>
+    <color name="block7">#b623ff</color>
 
-    <!-- text color-->
+    <!-- text color -->
     <color name="textTitle">#000000</color>
-    <color name="textContents">#5c5c5c</color>
+    <color name="textContents">#818181</color>
 
 </resources>
