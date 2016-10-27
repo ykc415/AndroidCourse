@@ -15,11 +15,14 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by YKC on 2016. 9. 28..
@@ -50,9 +53,16 @@ public class RecyclerCardAdapter extends RecyclerView.Adapter<RecyclerCardAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder,final int position) {
         RecyclerData data = datas.get(position);
+        
+        Uri sArtworkUri = Uri.parse("content://media/external/audio/albumart");
+        Uri uri = ContentUris.withAppendedId(sArtworkUri, Long.valueOf(data.albumId));
 
-        Bitmap bitmap = getAlbumArtImage(context, data.albumId);
-        holder.image.setImageBitmap(bitmap);
+        Glide.with(context)
+                .load(uri)
+                .bitmapTransform(new CropCircleTransformation(context))
+                .into(holder.image);
+
+
 
         holder.title.setText(data.title);
         holder.artist.setText(data.artist);

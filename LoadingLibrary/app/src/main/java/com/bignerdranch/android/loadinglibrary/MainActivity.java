@@ -7,8 +7,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 
-import com.squareup.picasso.Callback;
-import com.squareup.picasso.Picasso;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+
+import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,34 +31,36 @@ public class MainActivity extends AppCompatActivity {
 
                 String url = "http://www.zamong.co.kr/wp-content/uploads/2015/11/%EA%B3%A0%EB%A6%B4%EB%9D%BCi11319484924.jpg";
                 progressBar.setVisibility(View.VISIBLE);
-                Picasso.with(MainActivity.this).load(url).into(imageView, new Callback() {
-                    @Override
-                    public void onSuccess() {
-                        progressBar.setVisibility(View.GONE);
-                    }
-
-                    @Override
-                    public void onError() {
-
-                    }
-                });
-
-//                Glide.with(MainActivity.this)
-//                        .load(url)
-//                        .listener(new RequestListener<String,GlideDrawable>() {
+//                Picasso.with(MainActivity.this).load(url)
+//                        .into(imageView, new Callback() {
+//                    @Override
+//                    public void onSuccess() {
+//                        progressBar.setVisibility(View.GONE);
+//                    }
 //
-//                            @Override
-//                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
-//                                return false;
-//                            }
+//                    @Override
+//                    public void onError() {
 //
-//                            @Override
-//                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
-//                                progressBar.setVisibility(View.GONE);
-//                                return false;
-//                            }
-//                        })
-//                        .into(imageView);
+//                    }
+//                });
+
+                Glide.with(MainActivity.this)
+                        .load(url)
+                        .bitmapTransform(new CropCircleTransformation(MainActivity.this))
+                        .listener(new RequestListener<String,GlideDrawable>() {
+
+                            @Override
+                            public boolean onException(Exception e, String model, Target<GlideDrawable> target, boolean isFirstResource) {
+                                return false;
+                            }
+
+                            @Override
+                            public boolean onResourceReady(GlideDrawable resource, String model, Target<GlideDrawable> target, boolean isFromMemoryCache, boolean isFirstResource) {
+                                progressBar.setVisibility(View.GONE);
+                                return false;
+                            }
+                        })
+                        .into(imageView);
             }
         });
     }
