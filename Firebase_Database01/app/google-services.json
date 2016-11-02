@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "215816287387",
+    "firebase_url": "https://fchicken-e7fdf.firebaseio.com",
+    "project_id": "fchicken-e7fdf",
+    "storage_bucket": "fchicken-e7fdf.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:215816287387:android:60a06ef6a4cedad4",
+        "android_client_info": {
+          "package_name": "com.kodonho.android.firebase_database01"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "215816287387-3a87rgp4adfg5u6lcreg0tuc1eoi2btg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCr0v9BsMnUTPZBpAMn5JvlsYgw3QGfG58"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
