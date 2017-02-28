@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "95671451920",
-    "firebase_url": "https://fckorea-5605f.firebaseio.com",
-    "project_id": "fckorea-5605f",
-    "storage_bucket": "fckorea-5605f.appspot.com"
+    "project_number": "595589354879",
+    "firebase_url": "https://zigbang-906bd.firebaseio.com",
+    "project_id": "zigbang-906bd",
+    "storage_bucket": "zigbang-906bd.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:95671451920:android:7b67faa5749bbbb8",
+        "mobilesdk_app_id": "1:595589354879:android:bd66f820c0ee0b5b",
         "android_client_info": {
-          "package_name": "com.sunghyun.android.firebase_database"
+          "package_name": "com.android.sunghyun.zigbang_project"
         }
       },
       "oauth_client": [
         {
-          "client_id": "95671451920-dikfk5pnvs2c1oclf6ec0gt7b3h7kg30.apps.googleusercontent.com",
+          "client_id": "595589354879-obrj6ai65nnajoj7jbnhrkb4670r55t2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBapgQ2K36kJ0ybJIqX-hsj3K571vwfExY"
+          "current_key": "AIzaSyAk5IvB43vdalWXP6GLE1KemItfpbnZ1S4"
         }
       ],
       "services": {
@@ -39,28 +39,20 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:95671451920:android:95cb609084595437",
+        "mobilesdk_app_id": "1:595589354879:android:95cb609084595437",
         "android_client_info": {
           "package_name": "com.sunghyun.android.firebase_message"
         }
       },
       "oauth_client": [
         {
-          "client_id": "95671451920-01qrio3kbjmo21eduvd5nc8ajbnlj86b.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.sunghyun.android.firebase_message",
-            "certificate_hash": "A15FA0009C0929EB4D5844EA67F06B89A7D5CE21"
-          }
-        },
-        {
-          "client_id": "95671451920-dikfk5pnvs2c1oclf6ec0gt7b3h7kg30.apps.googleusercontent.com",
+          "client_id": "595589354879-obrj6ai65nnajoj7jbnhrkb4670r55t2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBapgQ2K36kJ0ybJIqX-hsj3K571vwfExY"
+          "current_key": "AIzaSyAk5IvB43vdalWXP6GLE1KemItfpbnZ1S4"
         }
       ],
       "services": {
@@ -68,13 +60,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "95671451920-dikfk5pnvs2c1oclf6ec0gt7b3h7kg30.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2

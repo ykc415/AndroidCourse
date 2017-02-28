@@ -1,15 +1,13 @@
 package com.bignerdranch.android.fragmentbasic_tablayout_viewpager;
 
-import android.net.Uri;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
 import android.widget.Toast;
 /*
     1. 그래들에 disign 라이브러리 추가
@@ -38,7 +36,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
         TabLayout tab = (TabLayout) findViewById(R.id.tab);
 
-        tab.addTab(tab.newTab().setText("Home"));
+        Drawable drawable = getResources().getDrawable(R.drawable);
+        tab.addTab(tab.newTab().setIcon(Drawabl);
         tab.addTab(tab.newTab().setText("Map"));
         tab.addTab(tab.newTab().setText("Etc"));
         tab.addTab(tab.newTab().setText("Settings"));
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
         pager.setAdapter(adapter);
 
         // 페이저가 변경되었을때 탭을 변경해주는 리스너
-        pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab));
+        //pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tab));
 
 
         tab.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(pager));
